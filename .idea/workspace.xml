@@ -11,8 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="457671b0-2097-4390-8e5d-10e454260916" name="Changes" comment="feat: add index.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/httpd.conf" beforeDir="false" afterPath="$PROJECT_DIR$/httpd.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/index.js" afterDir="false" />
     </list>
@@ -163,7 +161,7 @@
       <workItem from="1725779507063" duration="6035000" />
       <workItem from="1725785574166" duration="23779000" />
       <workItem from="1725827313436" duration="5466000" />
-      <workItem from="1725861368495" duration="16661000" />
+      <workItem from="1725861368495" duration="23552000" />
     </task>
     <servers />
   </component>

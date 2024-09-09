@@ -35,14 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
     async function handleCheckPoint(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
+        console.log(formData)
         const data = {
             x: +formData.get("x"),
             y: +formData.get("y"),
             r: +formData.get("r")
         };
+        console.log(data)
         if (!validateInput(data)) return;
         try {
-            console.log(await fetch(`/fcgi-bin/webLab1.jar?x=${x}&y=${y}&R=${r}`));
+            console.log(await fetch(`/fcgi-bin/webLab1.jar?x=${data.x}&y=${data.y}&R=${data.r}`));
         } catch (error) {
             console.error(error);
         }

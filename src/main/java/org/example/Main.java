@@ -4,8 +4,18 @@ package org.example;
 import com.fastcgi.FCGIInterface;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
+    private static final String RESULT_JSON = """
+            {
+                "hit": %b,
+                "startTime": %s, 
+                "executionTime": %s
+            }
+            """;
     private static final String HTTP_RESPONSE = """
             HTTP/1.1 200 OK
             Content-Type: application/json
@@ -20,11 +30,6 @@ public class Main {
             
             %s
             """;
-    private static final String RESULT_JSON = """
-            {
-                "result": %b
-            }
-            """;
     private static final String ERROR_JSON = """
             {
                 "reason": "%s"
@@ -33,21 +38,29 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println("start");
         var fcgi = new FCGIInterface();
         while (fcgi.FCGIaccept() >= 0) {
-            System.out.println("code >= 0");
             try {
+                LocalTime startTime = LocalTime.now();
+
                 var queryParams = System.getProperties().getProperty("QUERY_STRING");
                 var params = new Params(queryParams);
                 var result = calculate(params.getX(), params.getY(), params.getR());
 
-                var json = String.format(RESULT_JSON, result);
+                LocalTime endTime = LocalTime.now();
+                Duration duration = Duration.between(startTime, endTime);
+                long millis = duration.toMillis();
+                long seconds = millis / 1000;
+                long remainingMillis = millis % 1000;
+                String formattedDuration = String.format("%d.%03d seconds", seconds, remainingMillis);
+                String startTimeString = startTime.format(DateTimeFormatter.BASIC_ISO_DATE);
+
+                var json = String.format(RESULT_JSON, result, startTimeString, formattedDuration);
                 var response = String.format(HTTP_RESPONSE, json.getBytes(StandardCharsets.UTF_8).length + 2, json);
+
                 System.out.println(response);
-            } catch (ValidationException e) {
-                System.out.println(e.toString());
-                var json = String.format(ERROR_JSON, e.getMessage());
+            } catch (Exception ex) {
+                var json = String.format(ERROR_JSON, ex.getMessage());
                 var response = String.format(HTTP_ERROR, json.getBytes(StandardCharsets.UTF_8).length + 2, json);
                 System.out.println(response);
             }
