@@ -53,7 +53,9 @@ public class Main {
                 long seconds = millis / 1000;
                 long remainingMillis = millis % 1000;
                 String formattedDuration = String.format("%d.%03d seconds", seconds, remainingMillis);
-                String startTimeString = startTime.format(DateTimeFormatter.BASIC_ISO_DATE);
+
+                // Используем форматтер для времени
+                String startTimeString = startTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
 
                 var json = String.format(RESULT_JSON, result, startTimeString, formattedDuration);
                 var response = String.format(HTTP_RESPONSE, json.getBytes(StandardCharsets.UTF_8).length + 2, json);
@@ -66,6 +68,7 @@ public class Main {
             }
         }
     }
+
 
     private static boolean calculate(float x, float y, float r) {
         if (x > 0 && y > 0) {

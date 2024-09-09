@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data)
         if (!validateInput(data)) return;
         try {
-            console.log(await fetch(`/fcgi-bin/webLab1.jar?x=${data.x}&y=${data.y}&R=${data.r}`));
+            console.log(await fetch(`/fcgi-bin/webLab1.jar?x=${data.x}&y=${data.y}&r=${data.r}`));
         } catch (error) {
             console.error(error);
         }
