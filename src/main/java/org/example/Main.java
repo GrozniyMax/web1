@@ -36,6 +36,7 @@ public class Main {
         System.out.println("start");
         var fcgi = new FCGIInterface();
         while (fcgi.FCGIaccept() >= 0) {
+            System.out.println("code >= 0");
             try {
                 var queryParams = System.getProperties().getProperty("QUERY_STRING");
                 var params = new Params(queryParams);

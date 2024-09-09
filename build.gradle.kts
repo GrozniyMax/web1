@@ -21,16 +21,20 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "org.example.Main" // Устанавливаем главный класс для JAR
+        attributes["Main-Class"] = "org.example.Main"
     }
 
-    // Включаем зависимости в JAR файл
     from({
         configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }
     })
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // Избегаем дублирования ресурсов\
-    archiveFileName.set("webLab1.jar") // Задаем имя файла
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveFileName.set("webLab1.jar")
 }

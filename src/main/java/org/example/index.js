@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         if (!validateInput(data)) return;
         try {
-            console.log(await fetch(`http://localhost:35612/fcgi-bin/hello-world.jar?x=${x}&y=${y}&R=${r}`));
+            console.log(await fetch(`/fcgi-bin/webLab1.jar?x=${x}&y=${y}&R=${r}`));
         } catch (error) {
             console.error(error);
         }
