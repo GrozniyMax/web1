@@ -30,9 +30,13 @@ function validateInput({x, y, r}) {
     return true;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (
+
+) => {
+    loadTableData();
 
     async function handleCheckPoint(event) {
+
         event.preventDefault();
         const formData = new FormData(event.target);
         console.log(formData)
@@ -44,8 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data)
         if (!validateInput(data)) return;
         try {
-            console.log(await fetch(`/fcgi-bin/webLab1.jar?x=${data.x}&y=${data.y}&r=${data.r}`));
+            const response = await fetch(`/fcgi-bin/webLab1.jar?x=${data.x}&y=${data.y}&r=${data.r}`);
+            if (!response.ok) return;
+            const {
+                hit,
+                startTime,
+                executionTime
+            } = await response.json();
+            const currentOutput = JSON.parse(localStorage.getItem("current-output")) || [];
+            currentOutput.push({...data, hit, startTime, executionTime});
+            localStorage.setItem("current-output", JSON.stringify(currentOutput));
+            loadTableData();
         } catch (error) {
+
             console.error(error);
         }
 
@@ -54,3 +69,26 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".check-point-form")
         .addEventListener("submit", handleCheckPoint);
 });
+
+function loadTableData() {
+    const currentOutput = JSON.parse(localStorage.getItem("current-output")) || [];
+
+    const tbody = document.querySelector("tbody.output");
+
+    tbody.innerHTML = "";
+
+    currentOutput.forEach(item => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+                    <td>${item.x}</td>
+                    <td>${item.y}</td>
+                    <td>${item.r}</td>
+                    <td>${item.hit}</td>
+                    <td>${item.startTime}</td>
+                    <td>${item.executionTime}</td>
+                `;
+
+        tbody.appendChild(row);
+    });
+}

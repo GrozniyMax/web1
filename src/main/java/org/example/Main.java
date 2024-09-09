@@ -12,8 +12,8 @@ public class Main {
     private static final String RESULT_JSON = """
             {
                 "hit": %b,
-                "startTime": %s, 
-                "executionTime": %s
+                "startTime": "%s", 
+                "executionTime": "%s"
             }
             """;
     private static final String HTTP_RESPONSE = """
@@ -52,7 +52,7 @@ public class Main {
                 long millis = duration.toMillis();
                 long seconds = millis / 1000;
                 long remainingMillis = millis % 1000;
-                String formattedDuration = String.format("%d.%03d seconds", seconds, remainingMillis);
+                String formattedDuration = String.format("%d.%03d", seconds, remainingMillis);
 
                 // Используем форматтер для времени
                 String startTimeString = startTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
