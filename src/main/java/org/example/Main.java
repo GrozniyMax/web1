@@ -71,20 +71,20 @@ public class Main {
 
 
     private static boolean calculate(float x, float y, float r) {
-        if (x > 0 && y > 0) {
+        if (x < 0 && y < 0) {
             return false;
         }
-        if (x > 0 && y < 0) {
+        if (x < 0 && y > 0) {
             if ((x * x + y * y) > (r / 2) * (r / 2)) {
                 return false;
             }
         }
-        if (x < 0 && y < 0) {
+        if (x > 0 && y < 0) {
             if ((x / 2 + y) < -r / 2) {
                 return false;
             }
         }
-        if (x < 0 && y > 0) {
+        if (x > 0 && y > 0) {
             if (x < -r / 2 || y > r) {
                 return false;
             }

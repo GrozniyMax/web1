@@ -12,7 +12,6 @@
     <list default="true" id="457671b0-2097-4390-8e5d-10e454260916" name="Changes" comment="edit backend logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +160,7 @@
       <workItem from="1725779507063" duration="6035000" />
       <workItem from="1725785574166" duration="23779000" />
       <workItem from="1725827313436" duration="5466000" />
-      <workItem from="1725861368495" duration="24214000" />
+      <workItem from="1725861368495" duration="24899000" />
     </task>
     <task id="LOCAL-00001" summary="edit backend logic">
       <created>1725916930598</created>
