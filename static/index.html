@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--suppress HtmlDeprecatedAttribute -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        header {
+            font-family: fantasy;
+            font-size: large;
+            color: red;
+        }
+        table {
+            border: black;
+            color: aqua;
+            border: 1px;
+            width: 100%;
+        }
+        form{
+            align-content: center;
+            align-items: center;
+            color: blueviolet;
+        }
+        #x-input-form{
+            color: blue;
+        }
+    </style>
+    <script defer src="script.js"></script>
+</head>
+<body>
+<header>
+    Тараненко Максим Сергеевич <br>
+    Р3211<br>
+    409664
+</header>
+<table width="100%" style="border: 0;color: transparent; ">
+    <th>
+        <table id="result" >
+            <caption>Last requests</caption>
+            <thead>
+            <tr>
+                <th scope="col">x</th>
+                <th scope="col">y</th>
+                <th scope="col">R</th>
+                <th scope="col">Result</th>
+                <th scope="col">Start time</th>
+                <th scope="col">Execution time</th>
+            </tr>
+            </thead>
+            <tbody class="output">
+
+            </tbody>
+        </table>
+    </th>
+    <th>
+        <img src="img.png">
+    </th>
+    <tr/>
+    <th>
+        <form id="x-input-form">
+            <label>Выберите значение X</label>
+            <br>
+            <input class="x-input" type="checkbox" value="-2.0">
+            <label>X=-2.0</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="-1.5">
+            <label>X=-1.5</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="-1.0">
+            <label>X=-1.0</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="-0.5">
+            <label>X=-0.5</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="0">
+            <label>X=0.0</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="0.5">
+            <label>X=0.5</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="1.0">
+            <label>X=1.0</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="1.5">
+            <label>X=1.5</label>
+            <br/>
+            <input class="x-input" type="checkbox" value="2.0">
+            <label>X=2.0</label>
+            <br/>
+        </form>
+    </th>
+    <th>
+        <form>
+            <label>Введите значение Y</label>
+            <br>
+            <input id="y-input" type="text" placeholder="-5...3">
+            <br>
+            <br>
+            <label>Введите значение R</label>
+            <div>
+                <input name="r" type="radio" id="R=1" value="1"/>
+                <label>1</label><br>
+                <input name="r" type="radio" id="R=2" value="2"/>
+                <label>2</label><br>
+                <input name="r" type="radio" id="R=3" value="3"/>
+                <label>3</label><br>
+                <input name="r" type="radio" id="R=4" value="4"/>
+                <label>4</label><br>
+                <input name="r" type="radio" id="R=5" value="5"/>
+                <label>5</label><br>
+            </div>
+        </form>
+    </th>
+    <tr/>
+    <th colspan="2">
+        <button id="submit">Submit</button>
+
+    </th>
+
+
+</table>
+
+</body>
+</html>

@@ -6,20 +6,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Params {
-    private final int x;
+    private final float x;
     private final float y;
     private final float r;
 
-    public Params(String query) throws ValidationException {
+//    public Params(String query) throws ValidationException {
+//
+//        if (query == null || query.isEmpty()) {
+//            throw new ValidationException("Missing query string");
+//        }
+//        var params = splitQuery(query);
+//        validateParams(params);
+//        this.x = Float.parseFloat(params.get("x"));
+//        this.y = Float.parseFloat(params.get("y"));
+//        this.r = Float.parseFloat(params.get("r"));
+//    }
 
-        if (query == null || query.isEmpty()) {
-            throw new ValidationException("Missing query string");
-        }
-        var params = splitQuery(query);
-        validateParams(params);
-        this.x = Integer.parseInt(params.get("x"));
-        this.y = Float.parseFloat(params.get("y"));
-        this.r = Float.parseFloat(params.get("r"));
+    public Params(float x, float y, float r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
     }
 
     private static Map<String, String> splitQuery(String query) {
@@ -40,10 +46,7 @@ class Params {
         }
 
         try {
-            var xx = Integer.parseInt(x);
-            if (xx < -3 || xx > 5) {
-                throw new ValidationException("x has forbidden value");
-            }
+            var xx = Float.parseFloat(x);
         } catch (NumberFormatException e) {
             throw new ValidationException("x is not a number");
         }
@@ -55,9 +58,6 @@ class Params {
 
         try {
             var yy = Float.parseFloat(y);
-            if (yy < -3 || yy > 5) {
-                throw new ValidationException("y has forbidden value");
-            }
         } catch (NumberFormatException e) {
             throw new ValidationException("y is not a number");
         }
@@ -69,16 +69,13 @@ class Params {
 
         try {
             var rr = Float.parseFloat(r);
-            if (rr < 1 || rr > 3) {
-                throw new ValidationException("r has forbidden value");
-            }
         } catch (NumberFormatException e) {
             throw new ValidationException("r is not a number");
         }
     }
 
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
